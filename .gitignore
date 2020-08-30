@@ -1,6 +1,12 @@
-Image Emotion Dataset*
+# Datasets
+ImageEmotionModel/ImageEmotionDataset*
+SongEmotionModel/SongEmotionDataset
+SongEmotionModel/emotifymusic
 Imaginary Soundscape
-emotifymusic
+
+# Virtual Envs
 venv
 
+# Other
+*.ipynb_checkpoints
 *.DS_Store
