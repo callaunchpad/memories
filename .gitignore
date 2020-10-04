@@ -7,7 +7,9 @@ Imaginary Soundscape/data
 # Virtual Envs
 venv
 env
+myenv
+tutorial-env
 
 # Other
 *.ipynb_checkpoints
-*.DS_Store
+*.DS_Storemyenv/
