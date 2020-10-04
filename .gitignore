@@ -6,6 +6,7 @@ Imaginary Soundscape/data
 
 # Virtual Envs
 venv
+env
 
 # Other
 *.ipynb_checkpoints
