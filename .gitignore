@@ -4,6 +4,9 @@ SongEmotionModel/SongEmotionDataset
 SongEmotionModel/emotifymusic
 Imaginary Soundscape/data
 
+#Models
+Imaginary Soundscape/soundnet8_final.pth
+
 # Virtual Envs
 venv
 env
@@ -12,4 +15,4 @@ tutorial-env
 
 # Other
 *.ipynb_checkpoints
-*.DS_Storemyenv/
+*.DS_Store
