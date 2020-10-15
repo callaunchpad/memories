@@ -80,4 +80,6 @@ class SoundNet(nn.Module):
         x = self.batchnorm7(x)
         x = self.relu7(x)
 
+        x = self.conv8_objs(x)
+
         return x

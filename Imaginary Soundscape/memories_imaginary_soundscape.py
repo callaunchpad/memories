@@ -20,6 +20,7 @@ import os
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 
+# === Image model ===
 # Data augmentation and normalization for training
 
 data_augmentation = transforms.Compose([
@@ -34,9 +35,6 @@ input_image_path = Path.cwd()
 input_image = datasets.ImageFolder(input_image_path, data_augmentation)
 
 image_model = models.resnet18(pretrained=True)
-soundnet_model = SoundNet()
-soundnet_model.load_state_dict(torch.load("soundnet8_final.pth"))
-print(soundnet_model)
 
 num_features = image_model.fc.in_features
 
@@ -54,7 +52,26 @@ input = input_image[0][0].unsqueeze(0)
 input.to(device)
 
 output = image_model(input)[0]
-# print(output)
-# print(output.size())
+output = output.detach().numpy()
+print(output)
+print(output.size)
 
+# === Sound model ===
 
+soundnet_model = SoundNet()
+soundnet_model.load_state_dict(torch.load("soundnet8_final.pth"))
+
+sound_dataset_path = Path.cwd().joinpath('data/sound_samples')
+sample_loaded, rate = librosa.load(sound_dataset_path.joinpath('9447523993_9_9_3.mp3'))
+
+sample_loaded = np.reshape(sample_loaded, (1, 1, sample_loaded.shape[0], 1))
+
+#convert to tensor
+sample_loaded = torch.tensor(sample_loaded)
+sample_loaded.to(device)
+pred = soundnet_model(torch.tensor(sample_loaded))
+
+pred = pred[0].detach().numpy()
+pred = pred[:,0][:,0]
+print(pred)
+print(pred.size)
