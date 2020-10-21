@@ -80,9 +80,6 @@ pred = pred[:,0][:,0]
 print(pred)
 print(pred.size)
 
-# take the l2 distance of the image array and sort by how close they are
-# take the first three (closest)
-
 
 # Create JSON file with JSON object of sound_samples
 # key is the file path and the value is the 1000 length array
@@ -106,3 +103,14 @@ for filename in os.listdir(sound_dataset_path):
 
 with open('sound_samples.json', 'w') as outfile:
     json.dump(sound_samples, outfile, ensure_ascii=False, indent=4, sort_keys=True, separators=(',', ': '))
+
+# take the l2 distance of the image array and each array in sound samples and sort by how close they are
+f = open('sound_samples.json')
+sound_data = json.load(f)
+l2dist = {}
+for mp3 in sound_data:
+    l2dist[mp3] = np.linalg.norm(sound_data[mp3]-output)
+    # print(sound_data[mp3])
+f.close()
+print(min(l2dist))
+# take the first three (closest)
