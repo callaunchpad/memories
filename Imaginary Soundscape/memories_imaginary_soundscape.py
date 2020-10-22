@@ -55,8 +55,6 @@ input.to(device)
 
 output = image_model(input)[0]
 output = output.detach().numpy()
-print(output)
-print(output.size)
 
 # === Sound model ===
 
@@ -78,7 +76,6 @@ pred = soundnet_model(torch.tensor(sample_loaded))
 pred = pred[0].detach().numpy()
 pred = pred[:,0][:,0]
 print(pred)
-print(pred.size)
 
 
 # Create JSON file with JSON object of sound_samples
