@@ -39,6 +39,9 @@ export default function HeaderLinks(props) {
             <Link to="/aboutus" className={classes.dropdownLink}>
               About Us
             </Link>,
+            <Link to="/blog" className={classes.dropdownLink}>
+            Our Blog
+          </Link>,
             <a
               href="https://creativetimofficial.github.io/material-kit-react/#/documentation?ref=mkr-navbar"
               target="_blank"
