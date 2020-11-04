@@ -9,8 +9,8 @@ from PIL import Image
 model_conv = torchvision.models.resnet50(pretrained=True)
 num_ftrs = model_conv.fc.in_features
 model_conv.fc = torch.load('./test_model_resnet.pth')
-model_conv = model_conv.to(DEVICE)
-model.eval()
+model_conv = model_conv.to('cpu')  # force cpu
+model_conv.eval()
 
 # image loading pipeline
 transform = transforms.Compose([
@@ -23,14 +23,15 @@ transform = transforms.Compose([
 
 def image_loader(image_name):
     image = Image.open(image_name)
-    image = transform(image).cuda()
+    image = transform(image)
     return image.unsqueeze(0)
 
 def predict(request):
-    if request.args and 'image' in request.args:
-        image_url = request.args.get('image')
-    else:
-        return 'Error: Image not found'
+    #if request.args and 'image' in request.args:
+    #    image_url = request.args.get('image')
+    #else:
+    #    return 'Error: Image not found'
+    image_url = request
     image = image_loader(image_url)
     out = model_conv(image)
     pred = out.tolist()[0]
@@ -48,4 +49,4 @@ def predict(request):
     ]
 
     result = dict(zip(labels, pred))
-    result
+    return {'success': True, 'results': result}, 200
