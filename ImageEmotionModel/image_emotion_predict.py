@@ -27,11 +27,9 @@ def image_loader(image_name):
     return image.unsqueeze(0)
 
 def predict(request):
-    if request.args and 'image' in request.args:
-        image_url = request.args.get('image')
-    else:
+    if 'file' not in request.files:
         return {'success': False, 'message': 'Image not found'}, 400
-    image = image_loader(image_url)
+    image = image_loader(request.files['file'])
     out = model_conv(image)
     pred = out.tolist()[0]
 
