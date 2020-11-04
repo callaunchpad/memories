@@ -70,8 +70,8 @@ export default function Components(props) {
         <SectionPills />
         <SectionNotifications /> */}
         {/* <SectionTypography /> */}
-        {/* <SectionJavascript />
-        <SectionCompletedExamples /> */}
+        {/* <SectionJavascript /> */}
+        <SectionCompletedExamples />
         <SectionCarousel />
 
         {/* <SectionLogin /> */}
