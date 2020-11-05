@@ -9,8 +9,8 @@ import GridItem from "components/Grid/GridItem";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/completedStyle.js";
 
-import image from "../images/first-meeting-standing.jpg";
 import { Card } from "@material-ui/core";
+
 
 const useStyles = makeStyles(styles);
 
@@ -34,6 +34,7 @@ export default function Post4() {
               a little review on CNNs and the underlying functions of Resnets.
             </h4>
           </GridItem>
+          
         </GridContainer>
 
         <br></br>

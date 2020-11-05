@@ -9,8 +9,10 @@ import GridItem from "components/Grid/GridItem";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/completedStyle.js";
 
-import image from "../images/first-meeting-standing.jpg";
+import image from "../images/project-grind.png";
 import { Card } from "@material-ui/core";
+import Carousel from "react-slick";
+import LocationOn from "@material-ui/icons/LocationOn";
 
 const useStyles = makeStyles(styles);
 
@@ -32,6 +34,28 @@ export default function Post8() {
               session making sure their fine tuning their model seeing if they
               could increase their accuracy.
             </h4>
+          </GridItem>
+
+          <GridItem
+            xs={12}
+            sm={12}
+            md={8}
+            md={8}
+            className={classes.marginAuto}
+          >
+            <Card carousel>
+              <Carousel>
+                <div>
+                  <img src={image} alt="First slide" className="slick-image" />
+                  <div className="slick-caption">
+                    <h4>
+                      <LocationOn className="slick-icons" />
+                      Rachel's Place
+                    </h4>
+                  </div>
+                </div>
+              </Carousel>
+            </Card>
           </GridItem>
         </GridContainer>
 

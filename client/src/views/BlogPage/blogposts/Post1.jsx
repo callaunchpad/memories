@@ -11,6 +11,8 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/compl
 
 import image from "../images/first-meeting-standing.jpg";
 import { Card } from "@material-ui/core";
+import Carousel from "react-slick";
+import LocationOn from "@material-ui/icons/LocationOn";
 
 const useStyles = makeStyles(styles);
 
@@ -29,10 +31,25 @@ export default function Post1() {
               the semester, excited for the first project meeting tomorrow!
             </h4>
           </GridItem>
+          <GridItem xs={12} sm={12} md={8} md = {8} className={classes.marginAuto}>
+            <Card carousel>
+              <Carousel >
+                <div>
+                  <img src={image} alt="First slide" className="slick-image" />
+                  <div className="slick-caption">
+                    <h4>
+                      <LocationOn className="slick-icons" />
+                      James's Rooftop
+                    </h4>
+                  </div>
+                </div>
+              </Carousel>
+            </Card>
+          </GridItem>
         </GridContainer>
 
         <br></br>
-         {/* Image Here */}
+        {/* Image Here */}
       </div>
     </div>
   );

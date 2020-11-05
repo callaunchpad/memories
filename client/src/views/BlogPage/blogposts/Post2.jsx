@@ -9,8 +9,6 @@ import GridItem from "components/Grid/GridItem";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/completedStyle.js";
 
-import image from "../images/first-meeting-standing.jpg";
-import { Card } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
