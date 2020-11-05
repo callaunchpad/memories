@@ -27,6 +27,7 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/img/bg7.jpg";
 import axios from "axios";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -38,7 +39,8 @@ export default function LoginPage(props) {
   const classes = useStyles();
   const [isSubmitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState("");
-  const [showImage, setImage] = useState("");
+  const [showImage, setImage] = useState("./upload-cloud.svg");
+  const [maxProp, setMaxProp] = useState("Emotion");
   const { ...rest } = props;
 
   async function getMax(data) {
@@ -71,8 +73,9 @@ export default function LoginPage(props) {
       //json response
       console.log(response);
 
-      let maxProp = getMax(response.data.results)
+      const emotion = await getMax(response.data.results);
 
+      setMaxProp(emotion);
       setImage(URL.createObjectURL(image));
 
     } catch (error) {
@@ -115,9 +118,11 @@ export default function LoginPage(props) {
                     <h4>Upload an image</h4>
                   </CardHeader>
                   <CardBody>
-                    <Card>
-                      <img src={showImage}></img>
-                    </Card>
+                    <img
+                      resizeMode={'cover'}
+                      style={{ width: '100%'}}
+                      src={showImage}
+                    />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <input
@@ -138,6 +143,13 @@ export default function LoginPage(props) {
                   </CardFooter>
                   {isSubmitting && <LinearProgress />}
                 </form>
+              </Card>
+              <Card className={classes[cardAnimaton]}>
+                <CardHeader color="primary" className={classes.cardHeader}>
+                  <h4>{maxProp}</h4>
+                </CardHeader>
+                <Typography>
+                </Typography>
               </Card>
             </GridItem>
           </GridContainer>
