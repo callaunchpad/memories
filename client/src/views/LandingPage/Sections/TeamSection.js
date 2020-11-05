@@ -214,7 +214,7 @@ export default function TeamSection() {
                 Shuming Xu
                 <br />
                 <small className={classes.smallTitle}>
-                  Song-Emotion Classifier Team
+                  Image-Emotion Classifier Team
                 </small>
               </h4>
               <CardBody>
