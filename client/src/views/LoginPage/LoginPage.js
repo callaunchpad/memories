@@ -52,12 +52,10 @@ export default function LoginPage(props) {
         if (value > maxValue) {
           maxProp = prop
           maxValue = value
-        // }
+        }
       }
     return maxValue;
   }
-
-}
 
   async function handleImageChange(event) {
     setSubmitting(true);
