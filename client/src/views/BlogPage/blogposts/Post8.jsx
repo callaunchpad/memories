@@ -14,24 +14,23 @@ import { Card } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
-export default function Post4() {
+export default function Post8() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={8}>
-            <h2>Sunday, 10/4:</h2>
+            <h2>Saturday, 11/3:</h2>
             <h4>
-              The team met at Armaan’s place but had to wait 30 minutes for him
-              to show up at his own place :/ (Note: everyone but Shuming, Carly,
-              James were lateee) (Couldn’t connect to wifi since he thought it
-              was funny to name it “Big Deck” instead of his address smh
-              [everyone else thought it was funny too]). Rachel also waited
-              outside for 20 mins because nobody saw her message but followed
-              James’s loud voice to find the rest of the team on Armaan’s
-              balcony. The team also went over how to set up CSUA and James did
-              a little review on CNNs and the underlying functions of Resnets.
+              Even on election day the grind never ends! The whole team got
+              together to grind out the last few details of each subteams’
+              models to prepare for the mid semester deliverable! Shuming and
+              Kevin started on the Google Cloud platform to upload their model
+              on the backend server, while Rachel began working on the frontend
+              for the website. Armaan and Carly spent the majority of the
+              session making sure their fine tuning their model seeing if they
+              could increase their accuracy.
             </h4>
           </GridItem>
         </GridContainer>

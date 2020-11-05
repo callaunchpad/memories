@@ -85,6 +85,7 @@ const sidebar = {
   description:
     "A collection of our memories throughout the semester during our project meetings!",
   archives: [
+    { title: "11/3/20", url: "./post8" },
     { title: "10/24/20", url: "./post7" },
     { title: "10/18/20", url: "./post6" },
     { title: "10/11/20", url: "./post5" },

@@ -17,6 +17,7 @@ import Post4 from "views/BlogPage/blogposts/Post4";
 import Post5 from "views/BlogPage/blogposts/Post5";
 import Post6 from "views/BlogPage/blogposts/Post6";
 import Post7 from "views/BlogPage/blogposts/Post7";
+import Post8 from "views/BlogPage/blogposts/Post8";
 
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
@@ -36,6 +37,7 @@ ReactDOM.render(
       <Route path="/post5" component={Post5} />
       <Route path="/post6" component={Post6} />
       <Route path="/post7" component={Post7} />
+      <Route path="/post8" component={Post8} />
 
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/uploadimage" component={LoginPage} />

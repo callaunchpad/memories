@@ -14,7 +14,7 @@ import { Card } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
-export default function Post2() {
+export default function Post3() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
