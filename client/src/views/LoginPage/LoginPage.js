@@ -38,9 +38,8 @@ export default function LoginPage(props) {
   const classes = useStyles();
   const [isSubmitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState("");
+  const [showImage, setImage] = useState("");
   const { ...rest } = props;
-
-  let max = 0;
 
   async function getMax(data) {
     var maxProp = null;
@@ -53,7 +52,7 @@ export default function LoginPage(props) {
           maxValue = value
         }
       }
-    return maxValue;
+    return maxProp;
   }
 
   async function handleImageChange(event) {
@@ -69,42 +68,18 @@ export default function LoginPage(props) {
         }
       })
 
-
       //json response
       console.log(response);
 
-      max = getMax(response.data.results)
+      let maxProp = getMax(response.data.results)
 
-      console.log(max);
-
-
-
-
+      setImage(URL.createObjectURL(image));
 
     } catch (error) {
       console.log(error);
     } finally {
       setSubmitting(false);
     }
-
-
-    // Display image here and result
-    
-    show_image(image, 10, 10, "");
-
-
-  }
-
-  function show_image(src, width, height, alt) {
-    console.log(src)
-    var img = document.createElement("img");
-    img.src = src;
-    img.width = width;
-    img.height = height;
-    img.alt = alt;
-
-    // This next line will just add it to the <body> tag
-    document.body.appendChild(img);
   }
 
   function handleUploadImage() {
@@ -139,6 +114,11 @@ export default function LoginPage(props) {
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Upload an image</h4>
                   </CardHeader>
+                  <CardBody>
+                    <Card>
+                      <img src={showImage}></img>
+                    </Card>
+                  </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <input
                       type="file"
