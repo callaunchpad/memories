@@ -23,6 +23,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/img/bg7.jpg";
+import axios from "axios";
 
 const useStyles = makeStyles(styles);
 
@@ -41,10 +42,19 @@ export default function LoginPage(props) {
     try {
       const image = event.target.files[0];
       const formData = new FormData();
-      formData.append("image", image, image.name);
-      // await dispatch(uploadProfilePicture(history, formData));
+      formData.append("file", image, "file");
+      
+      const response = await axios.post('https://us-central1-memories-292920.cloudfunctions.net/predict', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+
+      console.log(response);
+
+
     } catch (error) {
-      setErrors(error.response.data.error);
+      console.log(error);
     } finally {
       setSubmitting(false);
     }
@@ -80,56 +90,6 @@ export default function LoginPage(props) {
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Upload an image</h4>
                   </CardHeader>
-                  <CardBody>
-                    <CustomInput
-                      labelText="First Name..."
-                      id="first"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        type: "text",
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <People className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <CustomInput
-                      labelText="Email..."
-                      id="email"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        type: "email",
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <Email className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <CustomInput
-                      labelText="Password"
-                      id="pass"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        type: "password",
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <Icon className={classes.inputIconsColor}>
-                              lock_outline
-                            </Icon>
-                          </InputAdornment>
-                        ),
-                        autoComplete: "off",
-                      }}
-                    />
-                  </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <input
                       type="file"
