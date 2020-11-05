@@ -9,12 +9,14 @@ import GridItem from "components/Grid/GridItem";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/completedStyle.js";
 
-import image from "../images/first-meeting-standing.jpg";
+import image from "../images/memorialstadium.png";
 import { Card } from "@material-ui/core";
+import Carousel from "react-slick";
+import LocationOn from "@material-ui/icons/LocationOn";
 
 const useStyles = makeStyles(styles);
 
-export default function Post2() {
+export default function Post3() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
@@ -27,6 +29,28 @@ export default function Post2() {
               night! Brought some drinks, Kevin showed his frat side, and got
               kicked out by the most BETA security guard of all time.
             </h4>
+          </GridItem>
+
+          <GridItem
+            xs={12}
+            sm={12}
+            md={8}
+            md={8}
+            className={classes.marginAuto}
+          >
+            <Card carousel>
+              <Carousel>
+                <div>
+                  <img src={image} alt="First slide" className="slick-image" />
+                  <div className="slick-caption">
+                    <h4>
+                      <LocationOn className="slick-icons" />
+                      Memorial Stadium
+                    </h4>
+                  </div>
+                </div>
+              </Carousel>
+            </Card>
           </GridItem>
         </GridContainer>
 
