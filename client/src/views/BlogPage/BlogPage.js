@@ -74,7 +74,7 @@ const featuredPosts = [
       'Preparing for the midsemester deliverable.',
     image: image3,
     imageText: 'Midsemester Deliverable Grind',
-    link: './post7',
+    link: './post8',
   },
 ];
 
