@@ -47,9 +47,6 @@ export default function Post1() {
             </Card>
           </GridItem>
         </GridContainer>
-
-        <br></br>
-        {/* Image Here */}
       </div>
     </div>
   );

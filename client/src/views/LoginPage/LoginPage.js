@@ -20,6 +20,9 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
+import Carousel from "react-slick";
+import LocationOn from "@material-ui/icons/LocationOn";
+
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/img/bg7.jpg";
@@ -37,6 +40,25 @@ export default function LoginPage(props) {
   const [errors, setErrors] = useState("");
   const { ...rest } = props;
 
+  let max = 0;
+
+  async function getMax(data) {
+    var maxProp = null;
+    var maxValue = Number.NEGATIVE_INFINITY;
+    for (var prop in data) {
+      // if (data.hasOwnProperty(prop)) {
+        console.log(prop)
+        var value = data[prop]
+        if (value > maxValue) {
+          maxProp = prop
+          maxValue = value
+        // }
+      }
+    return maxValue;
+  }
+
+}
+
   async function handleImageChange(event) {
     setSubmitting(true);
     try {
@@ -50,7 +72,16 @@ export default function LoginPage(props) {
         }
       })
 
+
+      //json response
       console.log(response);
+
+      max = getMax(response.data.results)
+
+      console.log(max);
+
+
+
 
 
     } catch (error) {
@@ -58,12 +89,33 @@ export default function LoginPage(props) {
     } finally {
       setSubmitting(false);
     }
+
+
+    // Display image here and result
+    
+    show_image(image, 10, 10, "");
+
+
+  }
+
+  function show_image(src, width, height, alt) {
+    console.log(src)
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
+
+    // This next line will just add it to the <body> tag
+    document.body.appendChild(img);
   }
 
   function handleUploadImage() {
     const fileInput = document.getElementById("userImageInput");
     fileInput.click();
+
   }
+
 
   return (
     <div>
@@ -105,6 +157,7 @@ export default function LoginPage(props) {
                     >
                       Upload
                     </Button>
+                    
                   </CardFooter>
                   {isSubmitting && <LinearProgress />}
                 </form>
