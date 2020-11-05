@@ -47,7 +47,6 @@ export default function LoginPage(props) {
     var maxValue = Number.NEGATIVE_INFINITY;
     for (var prop in data) {
       // if (data.hasOwnProperty(prop)) {
-        console.log(prop)
         var value = data[prop]
         if (value > maxValue) {
           maxProp = prop
