@@ -18,12 +18,18 @@ export default function SectionCompletedExamples() {
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={8}>
-            <h2>Completed with examples</h2>
+            <h2>Making Unforgettable Memories</h2>
             <h4>
-              The kit comes with three pre-built pages to help you get started
-              faster. You can change the text and images and you{"'"}re good to
-              go. More importantly, looking at them will give you a picture of
-              what you can build with this powerful kit.
+              Welcome to the Memories project, a web app where users can upload
+              pictures from their photo album and generate ambient sounds and
+              songs from the image’s scenery and emotion. Our software uses
+              pre-trained models such as Resnet and Soundnet and a multimodal
+              architecture to deconstruct both images and audio.
+              <br></br>
+              <br></br>
+              In between our work sessions where we build our training models,
+              we also make sure to create some meaningful
+              experiences together no matter where we are.
             </h4>
           </GridItem>
         </GridContainer>

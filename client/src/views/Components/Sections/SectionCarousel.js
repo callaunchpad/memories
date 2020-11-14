@@ -10,9 +10,9 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 
-import image1 from "assets/img/bg.jpg";
-import image2 from "assets/img/bg2.jpg";
-import image3 from "assets/img/bg3.jpg";
+import image1 from "views/BlogPage/images/first-meeting-standing.jpg";
+import image2 from "views/BlogPage/images/memorialstadium.png";
+import image3 from "views/BlogPage/images/ninjastars.png";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/carouselStyle.js";
 
@@ -40,7 +40,7 @@ export default function SectionCarousel() {
                   <div className="slick-caption">
                     <h4>
                       <LocationOn className="slick-icons" />
-                      Yellowstone National Park, United States
+                      James's Rooftop
                     </h4>
                   </div>
                 </div>
@@ -53,7 +53,7 @@ export default function SectionCarousel() {
                   <div className="slick-caption">
                     <h4>
                       <LocationOn className="slick-icons" />
-                      Somewhere Beyond, United States
+                      Memorial Stadium
                     </h4>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export default function SectionCarousel() {
                   <div className="slick-caption">
                     <h4>
                       <LocationOn className="slick-icons" />
-                      Yellowstone National Park, United States
+                      Zoom
                     </h4>
                   </div>
                 </div>

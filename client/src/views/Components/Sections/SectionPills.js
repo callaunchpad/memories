@@ -22,48 +22,48 @@ export default function SectionPills() {
     <div className={classes.section}>
       <div className={classes.container}>
         <div id="navigation-pills">
-          <div className={classes.title}>
+          {/* <div className={classes.title}>
             <h3>Navigation Pills</h3>
           </div>
           <div className={classes.title}>
             <h3>
               <small>With Icons</small>
             </h3>
-          </div>
+          </div> */}
           <GridContainer>
-            <GridItem xs={12} sm={12} md={8} lg={6}>
+            <GridItem lg={12} lg={12}>
               <NavPills
                 color="primary"
                 tabs={[
-                  {
-                    tabButton: "Dashboard",
-                    tabIcon: Dashboard,
-                    tabContent: (
-                      <span>
-                        <p>
-                          Collaboratively administrate empowered markets via
-                          plug-and-play networks. Dynamically procrastinate B2C
-                          users after installed base benefits.
-                        </p>
-                        <br />
-                        <p>
-                          Dramatically visualize customer directed convergence
-                          without revolutionary ROI. Collaboratively
-                          administrate empowered markets via plug-and-play
-                          networks. Dynamically procrastinate B2C users after
-                          installed base benefits.
-                        </p>
-                        <br />
-                        <p>
-                          Dramatically visualize customer directed convergence
-                          without revolutionary ROI. Collaboratively
-                          administrate empowered markets via plug-and-play
-                          networks. Dynamically procrastinate B2C users after
-                          installed base benefits.
-                        </p>
-                      </span>
-                    )
-                  },
+                  // {
+                  //   tabButton: "Dashboard",
+                  //   tabIcon: Dashboard,
+                  //   tabContent: (
+                  //     <span>
+                  //       <p>
+                  //         Collaboratively administrate empowered markets via
+                  //         plug-and-play networks. Dynamically procrastinate B2C
+                  //         users after installed base benefits.
+                  //       </p>
+                  //       <br />
+                  //       <p>
+                  //         Dramatically visualize customer directed convergence
+                  //         without revolutionary ROI. Collaboratively
+                  //         administrate empowered markets via plug-and-play
+                  //         networks. Dynamically procrastinate B2C users after
+                  //         installed base benefits.
+                  //       </p>
+                  //       <br />
+                  //       <p>
+                  //         Dramatically visualize customer directed convergence
+                  //         without revolutionary ROI. Collaboratively
+                  //         administrate empowered markets via plug-and-play
+                  //         networks. Dynamically procrastinate B2C users after
+                  //         installed base benefits.
+                  //       </p>
+                  //     </span>
+                  //   )
+                  // },
                   {
                     tabButton: "Schedule",
                     tabIcon: Schedule,
@@ -118,7 +118,7 @@ export default function SectionPills() {
                 ]}
               />
             </GridItem>
-            <GridItem xs={12} sm={12} md={12} lg={6}>
+            {/* <GridItem xs={12} sm={12} md={12} lg={6}>
               <NavPills
                 color="rose"
                 horizontal={{
@@ -179,7 +179,7 @@ export default function SectionPills() {
                   }
                 ]}
               />
-            </GridItem>
+            </GridItem> */}
           </GridContainer>
         </div>
       </div>

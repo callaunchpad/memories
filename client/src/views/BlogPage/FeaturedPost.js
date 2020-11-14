@@ -8,6 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles({
   card: {
@@ -27,7 +28,7 @@ export default function FeaturedPost(props) {
 
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="#">
+      <CardActionArea component="a" href={post.link}>
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>
@@ -46,7 +47,11 @@ export default function FeaturedPost(props) {
             </CardContent>
           </div>
           <Hidden xsDown>
-            <CardMedia className={classes.cardMedia} image={post.image} title={post.imageTitle} />
+            <CardMedia
+              className={classes.cardMedia}
+              image={post.image}
+              title={post.imageTitle}
+            />
           </Hidden>
         </Card>
       </CardActionArea>

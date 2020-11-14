@@ -42,13 +42,13 @@ export default function HeaderLinks(props) {
             <Link to="/blog" className={classes.dropdownLink}>
             Our Blog
           </Link>,
-            <a
-              href="https://creativetimofficial.github.io/material-kit-react/#/documentation?ref=mkr-navbar"
-              target="_blank"
-              className={classes.dropdownLink}
-            >
-              Documentation
-            </a>,
+            // <a
+            //   href="https://creativetimofficial.github.io/material-kit-react/#/documentation?ref=mkr-navbar"
+            //   target="_blank"
+            //   className={classes.dropdownLink}
+            // >
+            //   Documentation
+            // </a>,
           ]}
         />
       </ListItem>
