@@ -3,6 +3,7 @@ ImageEmotionModel/ImageEmotionDataset*
 SongEmotionModel/SongEmotionDataset
 SongEmotionModel/emotifymusic
 Imaginary Soundscape/data
+SongEmotionModel/otherdata/songs
 
 #Models
 *.pth
