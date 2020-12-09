@@ -12,8 +12,8 @@ import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
-import { Apps, CloudUpload } from "@material-ui/icons";
-
+import { Apps, CloudUpload} from "@material-ui/icons";
+import MusicNoteIcon from "@material-ui/icons/MusicNote";
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
@@ -40,27 +40,30 @@ export default function HeaderLinks(props) {
               About Us
             </Link>,
             <Link to="/blog" className={classes.dropdownLink}>
-            Our Blog
-          </Link>,
-            // <a
-            //   href="https://creativetimofficial.github.io/material-kit-react/#/documentation?ref=mkr-navbar"
-            //   target="_blank"
-            //   className={classes.dropdownLink}
-            // >
-            //   Documentation
-            // </a>,
+              Our Blog
+            </Link>,
           ]}
         />
       </ListItem>
       <ListItem className={classes.listItem}>
         <Link to="/uploadimage" className={classes.noDecoration}>
           <Button
-            href="https://www.creative-tim.com/product/material-kit-react?ref=mkr-navbar"
             color="transparent"
             target="_blank"
             className={classes.navLink}
           >
             <CloudUpload className={classes.icons} /> Upload Image
+          </Button>
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Link to="/uploadsound" className={classes.noDecoration}>
+          <Button
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+          >
+            <MusicNoteIcon className={classes.icons} /> Upload Sound
           </Button>
         </Link>
       </ListItem>
@@ -78,6 +81,7 @@ export default function HeaderLinks(props) {
             className={classes.navLink}
           >
             <i className={classes.socialIcons + " fab fa-github"} />
+            Github
           </Button>
         </Tooltip>
       </ListItem>
