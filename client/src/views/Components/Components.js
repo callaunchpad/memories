@@ -53,13 +53,6 @@ export default function Components(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        {/* <SectionBasics />
-        <SectionNavbars />
-        <SectionTabs />
-        <SectionPills />
-        <SectionNotifications /> */}
-        {/* <SectionTypography /> */}
-        {/* <SectionJavascript /> */}
         <SectionCompletedExamples />
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={8}>
@@ -76,17 +69,6 @@ export default function Components(props) {
           </GridItem>
         </GridContainer>
         <SectionCarousel />
-
-        {/* <SectionLogin /> */}
-        {/* <GridItem md={12} className={classes.textCenter}>
-          <Link to={"/login-page"} className={classes.link}>
-            <Button color="primary" size="lg" simple>
-              View Login Page
-            </Button>
-          </Link>
-        </GridItem>
-        <SectionExamples />
-        <SectionDownload /> */}
       </div>
       <Footer />
     </div>

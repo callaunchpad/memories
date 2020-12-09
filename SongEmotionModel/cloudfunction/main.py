@@ -3,6 +3,7 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 import numpy as np
+# from numba import decorators
 import librosa
 
 from PIL import Image
@@ -53,6 +54,7 @@ def fig2img ( fig ):
     w, h, d = buf.shape
     return Image.frombytes( "RGBA", ( w ,h ), buf.tostring( ) )
 
+cmap = plt.get_cmap('inferno')
 def song_to_image(song):
     y, sr = librosa.load(song, mono=True, duration=5)
     plt.specgram(y, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB')
@@ -61,7 +63,7 @@ def song_to_image(song):
     return image_loader(image)
 
 def image_loader(image_name):
-    image = Image.open(image_name).convert('RGB')
+    image = image_name.convert('RGB')
     image = transform(image)
     return image.unsqueeze(0)
 
