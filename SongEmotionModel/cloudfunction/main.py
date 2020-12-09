@@ -1,13 +1,14 @@
 import torch
 
 import torchvision
+import torchaudio
 import torchvision.transforms as transforms
 import numpy as np
-# from numba import decorators
-import librosa
+import os
 
 from PIL import Image
 import matplotlib.pyplot as plt
+import tempfile
 
 # set up model
 model_conv = torchvision.models.resnet50(pretrained=True)
@@ -54,10 +55,13 @@ def fig2img ( fig ):
     w, h, d = buf.shape
     return Image.frombytes( "RGBA", ( w ,h ), buf.tostring( ) )
 
-cmap = plt.get_cmap('inferno')
+
 def song_to_image(song):
-    y, sr = librosa.load(song, mono=True, duration=5)
-    plt.specgram(y, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB')
+    # y, sr = librosa.load(song, mono=True, duration=5)
+    cmap = plt.get_cmap('inferno')
+    waveform, sr = torchaudio.load(song)
+    mono_waveform = torch.mean(waveform, dim=0)
+    plt.specgram(mono_waveform, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB')
     plt.axis('off')
     image = fig2img(plt.gcf())
     return image_loader(image)
@@ -89,7 +93,9 @@ def predict_song(request):
 
     if 'file' not in request.files:
         return {'success': False, 'message': 'Song not found'}, 400, headers
-    image = song_to_image(request.files['file'])
+    song_file = request.files['file']
+    song_file.save(os.path.join(tempfile.gettempdir(), song_file.filename))
+    image = song_to_image(os.path.join(tempfile.gettempdir(), song_file.filename))
     out = model_conv(image)
     pred = out.tolist()[0]
 
