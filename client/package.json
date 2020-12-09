@@ -5,12 +5,14 @@
   "private": true,
   "main": "src/index.js",
   "dependencies": {
-    "@material-ui/core": "4.10.0",
+    "@material-ui/core": "^4.11.1",
     "@material-ui/icons": "4.9.1",
     "axios": "^0.21.0",
     "classnames": "2.2.6",
+    "gulp-sass": "^4.1.0",
     "history": "4.10.1",
     "markdown-to-jsx": "^7.0.1",
+    "material-ui": "^1.0.0-beta.47",
     "moment": "2.26.0",
     "node-sass": "4.14.1",
     "nouislider": "14.5.0",
@@ -22,7 +24,8 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
     "react-slick": "0.26.1",
-    "react-swipeable-views": "0.13.9"
+    "react-swipeable-views": "0.13.9",
+    "typescript": "3.9.3"
   },
   "devDependencies": {
     "@babel/cli": "7.10.1",

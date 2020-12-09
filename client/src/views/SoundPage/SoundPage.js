@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
-// @material-ui/icons
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
@@ -17,22 +17,23 @@ import CardFooter from "components/Card/CardFooter.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
-import image from "assets/img/bg7.jpg";
+import backgroundImage from "assets/img/bg7.jpg";
 import axios from "axios";
 import { Typography } from "@material-ui/core";
-import uploadImage from "./upload_image.gif";
+import uploadImage from "./sound-gif.gif";
+// import uploadSound from "assets/audio/example_audio.mp3";
 
 const useStyles = makeStyles(styles);
 
-export default function LoginPage(props) {
+export default function SoundPage(props) {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function () {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
   const [isSubmitting, setSubmitting] = useState(false);
-  const [errors, setErrors] = useState("");
-  const [showImage, setImage] = useState(uploadImage);
+  const [showImage] = useState(uploadImage);
+  const [showSound, setSound] = useState("assets/audio/example_audio.mp3");
   const [maxProp, setMaxProp] = useState("Emotion");
   const { ...rest } = props;
 
@@ -41,27 +42,34 @@ export default function LoginPage(props) {
     var maxValue = Number.NEGATIVE_INFINITY;
     for (var prop in data) {
       // if (data.hasOwnProperty(prop)) {
-        var value = data[prop]
-        if (value > maxValue) {
-          maxProp = prop
-          maxValue = value
-        }
+      var value = data[prop];
+      if (value > maxValue) {
+        maxProp = prop;
+        maxValue = value;
       }
+    }
     return maxProp;
   }
 
-  async function handleImageChange(event) {
+  async function handleSoundChange(event) {
     setSubmitting(true);
     try {
-      const image = event.target.files[0];
+      const sound = event.target.files[0];
+      setSound(URL.createObjectURL(sound));
+      document.getElementById("audio").load();
+
       const formData = new FormData();
-      formData.append("file", image, "file");
-      
-      const response = await axios.post('https://us-central1-memories-292920.cloudfunctions.net/predict', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      formData.append("file", sound, "file");
+
+      const response = await axios.post(
+        "https://us-central1-memories-292920.cloudfunctions.net/predict",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      })
+      );
 
       //json response
       console.log(response);
@@ -69,8 +77,7 @@ export default function LoginPage(props) {
       const emotion = await getMax(response.data.results);
 
       setMaxProp(emotion);
-      setImage(URL.createObjectURL(image));
-
+      
     } catch (error) {
       console.log(error);
     } finally {
@@ -78,12 +85,10 @@ export default function LoginPage(props) {
     }
   }
 
-  function handleUploadImage() {
-    const fileInput = document.getElementById("userImageInput");
+  function handleUploadSound() {
+    const fileInput = document.getElementById("userSoundInput");
     fileInput.click();
-
   }
-
 
   return (
     <div>
@@ -97,7 +102,7 @@ export default function LoginPage(props) {
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url(" + image + ")",
+          backgroundImage: "url(" + backgroundImage + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}
@@ -108,31 +113,49 @@ export default function LoginPage(props) {
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
                   <CardHeader color="primary" className={classes.cardHeader}>
-                    <h4>Upload an image</h4>
+                    <h4>Upload a sound</h4>
                   </CardHeader>
                   <CardBody>
                     <img
-                      resizeMode={'cover'}
-                      style={{ width: '100%'}}
+                      // resizeMode={"cover"}
+                      style={{
+                        width: "50%",
+                        height: "50%",
+                        marginLeft: "25%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                       src={showImage}
                     />
+                    <audio
+                      controls
+                      id = "audio"
+                      style={{
+                        width: "99%",
+                        // height: "50%",
+                        // marginLeft: "25%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <source src={showSound} />
+                    </audio>
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <input
                       type="file"
-                      id="userImageInput"
-                      onChange={handleImageChange}
+                      id="userSoundInput"
+                      onChange={handleSoundChange}
                       hidden={true}
                     />
                     <Button
-                      onClick={handleUploadImage}
+                      onClick={handleUploadSound}
                       simple
                       color="primary"
                       size="lg"
                     >
                       Upload
                     </Button>
-                    
                   </CardFooter>
                   {isSubmitting && <LinearProgress />}
                 </form>
@@ -141,8 +164,7 @@ export default function LoginPage(props) {
                 <CardHeader color="primary" className={classes.cardHeader}>
                   <h4>{maxProp}</h4>
                 </CardHeader>
-                <Typography>
-                </Typography>
+                <Typography></Typography>
               </Card>
             </GridItem>
           </GridContainer>
