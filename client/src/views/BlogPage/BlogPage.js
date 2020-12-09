@@ -51,10 +51,10 @@ const featuredPosts = [
     title: 'Featured Post',
     date: 'Nov. 4',
     description:
-      'Midsemester Deliverable',
+      'Updates from the Midsemester Deliverable.',
     image: image4,
-    imageText: 'Memorial Stadium',
-    link: './post10',
+    imageText: 'Midsemester Deliverable',
+    link: './post9',
   },
   {
     title: 'Most Recent Post',

@@ -37,10 +37,9 @@ export default function Post9() {
           </GridItem>
 
           <GridItem
-            xs={12}
-            sm={12}
-            md={8}
-            md={8}
+            xs={6}
+            sm={6}
+            md={6}
             className={classes.marginAuto}
           >
             <Card carousel paddingTop={2}>
@@ -52,10 +51,9 @@ export default function Post9() {
             </Card>
           </GridItem>
           <GridItem
-            xs={12}
-            sm={12}
-            md={8}
-            md={8}
+            xs={6}
+            sm={6}
+            md={6}
             className={classes.marginAuto}
           >
             <Card carousel>
