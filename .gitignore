@@ -4,6 +4,11 @@ SongEmotionModel/SongEmotionDataset
 SongEmotionModel/emotifymusic
 Imaginary Soundscape/data
 SongEmotionModel/otherdata/songs
+SongEmotionModel/otherdata/__MACOSX/
+SongEmotionModel/otherdata/songs.zip
+SongEmotionModel/otherdata/view?usp=sharing
+SongEmotionModel/songs.zip
+SongEmotionModel/songs/
 
 #Models
 *.pth
