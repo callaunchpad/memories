@@ -60,7 +60,8 @@ def fig2img ( fig ):
 def song_to_image(song):
     cmap = plt.get_cmap('inferno')
     # y, sr = librosa.load(song, mono=True, duration=5)
-    y = decode(song, nchannels=1, sample_rate=16000)
+    y = decode_file(songname, nchannels=1, sample_rate=22050)
+    y = y.samples
     # waveform, sr = torchaudio.load(song)
     # mono_waveform = torch.mean(waveform, dim=0)
     plt.specgram(y, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB')
@@ -96,10 +97,7 @@ def predict_song(request):
     if 'file' not in request.files:
         return {'success': False, 'message': 'Song not found'}, 400, headers
     song_file = request.files['file']
-    # song_file.save(os.path.join(tempfile.gettempdir(), song_file.filename))
-    # image = song_to_image(os.path.join(tempfile.gettempdir(), song_file.filename))
-
-    # image = song_to_image(song_file)
+    image = song_to_image(song_file)
     out = model_conv(image)
     pred = out.tolist()[0]
 
