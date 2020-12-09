@@ -68,6 +68,17 @@ export default function HeaderLinks(props) {
         </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
+        <Link to="/imagetosong" className={classes.noDecoration}>
+          <Button
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+          >
+            <CloudUpload className={classes.icons} /> Image to Song
+          </Button>
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-twitter"
           title="Check out our GitHub"

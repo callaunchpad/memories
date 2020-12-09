@@ -43,7 +43,7 @@ export default function SoundPage(props) {
     for (var prop in data) {
       // if (data.hasOwnProperty(prop)) {
       var value = data[prop];
-      if (value > maxValue) {
+      if (value > maxValue && prop != "solemnity") {
         maxProp = prop;
         maxValue = value;
       }
@@ -56,6 +56,8 @@ export default function SoundPage(props) {
     try {
       const sound = event.target.files[0];
       setSound(URL.createObjectURL(sound));
+      console.log(sound);
+      console.log(URL.createObjectURL(sound));
       document.getElementById("audio").load();
 
       const formData = new FormData();

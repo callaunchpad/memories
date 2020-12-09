@@ -24,7 +24,8 @@ import Post11 from "views/BlogPage/blogposts/Post11";
 
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
-import SoundPage from "views/SoundPage/SoundPage.js"
+import SoundPage from "views/SoundPage/SoundPage.js";
+import ImageToSong from "views/ImageToSongPage/ImageToSong.js";
 
 var hist = createBrowserHistory();
 
@@ -49,6 +50,7 @@ ReactDOM.render(
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/uploadimage" component={LoginPage} />
       <Route path="/uploadsound" component={SoundPage} />
+      <Route path="/imagetosong" component={ImageToSong} />
       <Route path="/" component={Components} />
     </Switch>
   </Router>,
