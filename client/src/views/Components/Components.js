@@ -61,6 +61,17 @@ export default function Components(props) {
         {/* <SectionTypography /> */}
         {/* <SectionJavascript /> */}
         <SectionCompletedExamples />
+        <div className={classNames(classes.main, classes.slides)}>
+          <iframe
+            src="https://docs.google.com/presentation/d/e/2PACX-1vTrOZAauhxxEf6FaCq3uX7KeW8iURXd7FEhg970Ty8OJS0afdj6eXy_UU9y-qXA5hpZ7azFYBfK3mid/embed?start=true&loop=true&delayms=3000"
+            frameborder="0"
+            width="960"
+            height="569"
+            allowfullscreen="true"
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+          ></iframe>
+        </div>
         <SectionCarousel />
 
         {/* <SectionLogin /> */}
