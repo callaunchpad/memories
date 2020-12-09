@@ -6,7 +6,7 @@ Imaginary Soundscape/data
 SongEmotionModel/otherdata/songs
 
 #Models
-*.pth
+# *.pth
 Imaginary Soundscape/soundnet8_final.pth
 
 # Virtual Envs
