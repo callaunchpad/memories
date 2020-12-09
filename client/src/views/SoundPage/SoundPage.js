@@ -62,7 +62,7 @@ export default function SoundPage(props) {
       formData.append("file", sound, "file");
 
       const response = await axios.post(
-        "https://us-central1-memories-292920.cloudfunctions.net/predict",
+        "https://us-central1-memories-292920.cloudfunctions.net/predict_song",
         formData,
         {
           headers: {

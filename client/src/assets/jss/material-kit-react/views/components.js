@@ -23,10 +23,17 @@ const componentsStyle = {
     zIndex: "3",
   },
   slides: {
-    background: "#FFFFFF",
-    position: "center",
-    marginLeft: 250,
-    zIndex: "3",
+    position: "relative",
+    paddingBottom: "56.25%", /* 16:9 */
+    paddingTop: "25px",
+    height: 0,
+  },
+  slidesiframe: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
   },
   mainRaised: {
     margin: "-60px 30px 0px",
