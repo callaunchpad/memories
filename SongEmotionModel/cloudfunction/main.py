@@ -3,6 +3,7 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 import numpy as np
+import librosa
 
 from PIL import Image
 import matplotlib.pyplot as plt
