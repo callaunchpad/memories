@@ -5,6 +5,7 @@ import torchaudio
 import torchvision.transforms as transforms
 import numpy as np
 import os
+from miniaudio import decode
 
 from PIL import Image
 import matplotlib.pyplot as plt
@@ -57,11 +58,12 @@ def fig2img ( fig ):
 
 
 def song_to_image(song):
-    # y, sr = librosa.load(song, mono=True, duration=5)
     cmap = plt.get_cmap('inferno')
-    waveform, sr = torchaudio.load(song)
-    mono_waveform = torch.mean(waveform, dim=0)
-    plt.specgram(mono_waveform, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB')
+    # y, sr = librosa.load(song, mono=True, duration=5)
+    y = decode(song, nchannels=1, sample_rate=16000)
+    # waveform, sr = torchaudio.load(song)
+    # mono_waveform = torch.mean(waveform, dim=0)
+    plt.specgram(y, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB')
     plt.axis('off')
     image = fig2img(plt.gcf())
     return image_loader(image)
@@ -79,9 +81,9 @@ def predict_song(request):
         # header and caches preflight response for an 3600s
         headers = {
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Max-Age': '3600'
+            'Access-Control-Max-Age': '3600' 
         }
 
         return ('', 204, headers)
@@ -94,8 +96,10 @@ def predict_song(request):
     if 'file' not in request.files:
         return {'success': False, 'message': 'Song not found'}, 400, headers
     song_file = request.files['file']
-    song_file.save(os.path.join(tempfile.gettempdir(), song_file.filename))
-    image = song_to_image(os.path.join(tempfile.gettempdir(), song_file.filename))
+    # song_file.save(os.path.join(tempfile.gettempdir(), song_file.filename))
+    # image = song_to_image(os.path.join(tempfile.gettempdir(), song_file.filename))
+
+    # image = song_to_image(song_file)
     out = model_conv(image)
     pred = out.tolist()[0]
 
@@ -112,4 +116,4 @@ def predict_song(request):
     ]
 
     result = dict(zip(labels, pred))
-    return {'success': True, 'results': result}, 200, headers
+    return ({'success': True, 'results': result}, 200, headers)

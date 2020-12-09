@@ -72,8 +72,26 @@ def closest_song(song, all_songs, labels):
     distances = np.linalg.norm(all_songs-song, axis=1)
     return labels[np.argmin(distances)]
     
-def predict(image):
+def predict_song_from_img(image):
     # predict a song given the output of the image emotion model
     # ex: predict(np.array([[0, 0, 1, 2, 2, 0, -2, 0]]))
+
+    if request.method == 'OPTIONS':
+        # Allows GET/POST requests from any origin with the Content-Type
+        # header and caches preflight response for an 3600s
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Max-Age': '3600' 
+        }
+
+        return ('', 204, headers)
+
+    # Set CORS headers for the main request
+    headers = {
+        'Access-Control-Allow-Origin': '*'
+    }
+
     song = image_to_song(image)
-    return closest_song(song, songs_vector, songs)
+    return closest_song(song, songs_vector, songs), 200, headers
