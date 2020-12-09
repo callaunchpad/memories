@@ -1,12 +1,15 @@
 import torch
 
 import torchvision
+import torchaudio
 import torchvision.transforms as transforms
 import numpy as np
-import librosa
+import os
+from miniaudio import decode
 
 from PIL import Image
 import matplotlib.pyplot as plt
+import tempfile
 
 # set up model
 model_conv = torchvision.models.resnet50(pretrained=True)
@@ -53,15 +56,21 @@ def fig2img ( fig ):
     w, h, d = buf.shape
     return Image.frombytes( "RGBA", ( w ,h ), buf.tostring( ) )
 
+
 def song_to_image(song):
-    y, sr = librosa.load(song, mono=True, duration=5)
+    cmap = plt.get_cmap('inferno')
+    # y, sr = librosa.load(song, mono=True, duration=5)
+    y = decode_file(songname, nchannels=1, sample_rate=22050)
+    y = y.samples
+    # waveform, sr = torchaudio.load(song)
+    # mono_waveform = torch.mean(waveform, dim=0)
     plt.specgram(y, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB')
     plt.axis('off')
     image = fig2img(plt.gcf())
     return image_loader(image)
 
 def image_loader(image_name):
-    image = Image.open(image_name).convert('RGB')
+    image = image_name.convert('RGB')
     image = transform(image)
     return image.unsqueeze(0)
 
@@ -73,9 +82,9 @@ def predict_song(request):
         # header and caches preflight response for an 3600s
         headers = {
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Max-Age': '3600'
+            'Access-Control-Max-Age': '3600' 
         }
 
         return ('', 204, headers)
@@ -87,7 +96,8 @@ def predict_song(request):
 
     if 'file' not in request.files:
         return {'success': False, 'message': 'Song not found'}, 400, headers
-    image = song_to_image(request.files['file'])
+    song_file = request.files['file']
+    image = song_to_image(song_file)
     out = model_conv(image)
     pred = out.tolist()[0]
 
@@ -104,4 +114,4 @@ def predict_song(request):
     ]
 
     result = dict(zip(labels, pred))
-    return {'success': True, 'results': result}, 200, headers
+    return ({'success': True, 'results': result}, 200, headers)
