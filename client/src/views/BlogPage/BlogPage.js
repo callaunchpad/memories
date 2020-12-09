@@ -4,30 +4,19 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
 
 import Header from './Header';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
-
-import post1 from './blogposts/Post1';
-import post2 from './blogposts/Post2';
-import post3 from './blogposts/Post3';
-import post4 from './blogposts/Post4';
-import post5 from './blogposts/Post5';
-import post6 from './blogposts/Post6';
-import post7 from './blogposts/Post7';
+import Footer from './Footer'
 
 
 
 import image1 from './images/first-meeting-standing.jpg';
-import image2 from "./images/first-meeting-sitting.jpg";
-import image3 from "./images/project-grind.png";
-import image4 from "./images/memorialstadium.png";
+import image3 from "./images/memories-cover.png";
+import image4 from "./images/midsemester1.png";
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -60,31 +49,33 @@ const mainFeaturedPost = {
 const featuredPosts = [
   {
     title: 'Featured Post',
-    date: 'Oct 1',
+    date: 'Nov. 4',
     description:
-      'A spontaneous adventure into Memorial Stadium.',
+      'Updates from the Midsemester Deliverable.',
     image: image4,
-    imageText: 'Memorial Stadium',
-    link: './post3',
+    imageText: 'Midsemester Deliverable',
+    link: './post9',
   },
   {
     title: 'Most Recent Post',
-    date: 'Nov 3',
+    date: 'Dec. 8',
     description:
-      'Preparing for the midsemester deliverable.',
+      'Preparing for the final showcase!',
     image: image3,
-    imageText: 'Midsemester Deliverable Grind',
-    link: './post8',
+    imageText: 'Final Showcase Grind',
+    link: './post11',
   },
 ];
 
-const posts = [post1, post2, post3];
 
 const sidebar = {
   title: "About",
   description:
     "A collection of our memories throughout the semester during our project meetings!",
   archives: [
+    { title: "12/08/20", url: "./post11" },
+    { title: "11/22/20", url: "./post10" },
+    { title: "11/4/20", url: "./post9" },
     { title: "11/3/20", url: "./post8" },
     { title: "10/24/20", url: "./post7" },
     { title: "10/18/20", url: "./post6" },

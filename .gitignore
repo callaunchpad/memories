@@ -11,7 +11,7 @@ SongEmotionModel/songs.zip
 SongEmotionModel/songs/
 
 #Models
-*.pth
+# *.pth
 Imaginary Soundscape/soundnet8_final.pth
 
 # Virtual Envs

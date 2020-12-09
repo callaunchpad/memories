@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
-import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
@@ -18,16 +14,13 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-
-import Carousel from "react-slick";
-import LocationOn from "@material-ui/icons/LocationOn";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/img/bg7.jpg";
 import axios from "axios";
 import { Typography } from "@material-ui/core";
+import uploadImage from "./upload_image.gif";
 
 const useStyles = makeStyles(styles);
 
@@ -39,7 +32,7 @@ export default function LoginPage(props) {
   const classes = useStyles();
   const [isSubmitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState("");
-  const [showImage, setImage] = useState("./upload-cloud.svg");
+  const [showImage, setImage] = useState(uploadImage);
   const [maxProp, setMaxProp] = useState("Emotion");
   const { ...rest } = props;
 
